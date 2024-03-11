@@ -7,9 +7,7 @@ From your terminal:
 npm run dev
 ```
 
-
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+## What was done
+ -  The ProgressIndicator component with  ```sh  progress and color  ``` props, which can be hydrated via client prop or server side 
+      - 
+ - Onboarding screen with 3 steps
