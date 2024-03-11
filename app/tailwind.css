@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .container {
+    background-color: white;
+  }
+
+  ul {
+    list-style: inherit;
+  }
+
+  body {
+    background-color: #edf4f5;
+  }
+
+  :root {
+    --blue: hsl(202 100% 43%);
+    --green: hsl(105 54% 40%);
+    --purple: hsl(240 100% 68%);
+    --orange: hsl(25 85% 56%);
+    --yellow: hsl(40 70% 47%);
+    --gray-light: hsl(187.5, 28.6%, 94.5%);
+
+    --blue-gradient-from: hsl(240 100% 68%);
+    --blue-gradient-to: hsl(195 82% 60%);
+
+    --green-gradient-from: hsl(105 54% 40%);
+    --green-gradient-to: hsl(141 93% 84%);
+
+    --yellow-gradient-from: hsl(47 87% 55%);
+    --yellow-gradient-to: hsl(65 100% 83%);
+
+    --orange-gradient-from: hsl(25 85%, 56%);
+    --orange-gradient-to: hsl(50 100% 85%);
+
+    --purple-gradient-from: hsl(240 100% 68%);
+    --purple-gradient-to: hsl(270 61% 87%);
+  }
+}

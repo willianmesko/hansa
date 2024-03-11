@@ -1,41 +1,68 @@
-import type { MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
+import { OnboardingPage } from "~/pages";
+import { Color } from "~/shared/components/ProgressIndicator/ProgressIndicator.props";
+
+const tableData = [
+  {
+    fundingSources: "Private foundations",
+    successRate: 75,
+  },
+  {
+    fundingSources: "Community foundations",
+    successRate: 65,
+  },
+  {
+    fundingSources: "Corporations",
+    successRate: 52,
+  },
+  {
+    fundingSources: "State government",
+    successRate: 42,
+  },
+  {
+    fundingSources: "Local government",
+    successRate: 36,
+  },
+  {
+    fundingSources: "Federal government funding",
+    successRate: 33,
+  },
+  {
+    fundingSources: "Other funding sources",
+    successRate: 13,
+  },
+];
 
 export default function Index() {
-  return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+  return <OnboardingPage />;
+}
+
+const getFundingSources = () =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(tableData);
+    }, 200);
+  });
+
+const getProgressIndicatorMetaData = () =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        progress: 33,
+        color: Color.blue,
+      });
+    }, 200);
+  });
+
+export async function loader() {
+  const [fundingSourcesData, progressIndicatorMetaData] = await Promise.all([
+    getFundingSources(),
+    getProgressIndicatorMetaData(),
+  ]);
+
+  return json({
+    fundingSourcesData,
+    progressIndicatorMetaData,
+  });
 }
