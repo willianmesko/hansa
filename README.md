@@ -29,3 +29,5 @@ run npm install
 npm run dev
 
 open http://localhost:3000/
+
+![Screen Recording 2024-03-11 at 17 00 51](https://github.com/willianmesko/hansa/assets/26778884/004cca61-5858-425e-b132-ad8b39cfbd47
