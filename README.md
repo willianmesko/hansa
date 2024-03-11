@@ -6,7 +6,7 @@ What was done
  - Basic Input Component
  - Basic Accordion Component
 
-What is missing
+To do
  - Submit form
  - Input data validation
  - Unit testing
