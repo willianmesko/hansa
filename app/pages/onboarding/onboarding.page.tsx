@@ -35,13 +35,13 @@ const OnboardingPage: React.FC = () => {
       </Link>
 
       <Container>
-        <div className="flex gap-2 mb-4  ">
+        <div className="flex md:justify-between gap-2 mb-4">
           <ProgressIndicator
             progress={percentageCompleted}
             color={isLastStep ? Color.green : Color.blue}
           />
 
-          <p className="text-wrap  font-semibold text-2xl">
+          <p className="text-wrap md:leading-[3rem]  font-semibold text-2xl">
             Understanding what funding is right for your business
           </p>
 
