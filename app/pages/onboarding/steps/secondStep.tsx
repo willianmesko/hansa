@@ -3,14 +3,14 @@ import { useLoaderData } from "@remix-run/react";
 
 import { Input } from "~/shared/components";
 
-type FoundingSource = {
+type FundingSource = {
   fundingSources: string;
   successRate: number;
 };
 
 const SecondStep: React.FC = () => {
   const { fundingSourcesData } = useLoaderData<{
-    fundingSourcesData: FoundingSource[];
+    fundingSourcesData: FundingSource[];
   }>();
 
   return (
