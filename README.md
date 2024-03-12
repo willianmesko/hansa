@@ -1,7 +1,7 @@
 
 
 What was done
- -  The ProgressIndicator component with progress and color props which can be hydrated via client prop or server side
+ -  The ProgressIndicator component with progress and color props which can be hydrated by client prop or server side
  - Onboarding screen with 3 steps
  - Basic Input Component
  - Basic Accordion Component
