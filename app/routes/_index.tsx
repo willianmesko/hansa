@@ -45,7 +45,7 @@ const getFundingSources = () =>
     }, 200);
   });
 
-const getProgressIndicatorMetaData = () =>
+const getProgressIndicatorProps = () =>
   new Promise((resolve) => {
     setTimeout(() => {
       resolve({
@@ -56,13 +56,13 @@ const getProgressIndicatorMetaData = () =>
   });
 
 export async function loader() {
-  const [fundingSourcesData, progressIndicatorMetaData] = await Promise.all([
+  const [fundingSourcesData, progressIndicatorProps] = await Promise.all([
     getFundingSources(),
-    getProgressIndicatorMetaData(),
+    getProgressIndicatorProps(),
   ]);
 
   return json({
     fundingSourcesData,
-    progressIndicatorMetaData,
+    progressIndicatorProps,
   });
 }

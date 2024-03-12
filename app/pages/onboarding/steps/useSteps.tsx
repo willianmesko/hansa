@@ -1,5 +1,12 @@
 import { useCallback, useMemo, useState } from "react";
 import { FirstStep, SecondStep, Step, ThirdStep } from ".";
+import { useLoaderData } from "@remix-run/react";
+import {
+  Color,
+  ProgressIndicatorProps,
+} from "~/shared/components/ProgressIndicator/ProgressIndicator.props";
+
+type ProgressIndicatorPropsResponse = Required<ProgressIndicatorProps>;
 
 type UseStepsOutput = {
   handleNextStep: () => void;
@@ -8,14 +15,24 @@ type UseStepsOutput = {
   currentStep: number;
   totalSteps: number;
   percentageCompleted: number;
+  progressIndicatorColor: keyof typeof Color;
+  isLastStep: boolean;
 };
 
 export default function useSteps(): UseStepsOutput {
   const [currentStep, setCurrentStep] = useState(Step.First);
 
+  const {
+    progressIndicatorProps: { progress, color },
+  } = useLoaderData<{
+    progressIndicatorProps: ProgressIndicatorPropsResponse;
+  }>();
+
   const totalSteps = 3;
   const percentageCompleted =
-    100 - (100 / totalSteps) * (totalSteps - currentStep);
+    100 - (100 / totalSteps) * (totalSteps - currentStep) ?? progress;
+
+  const isLastStep = currentStep === totalSteps;
 
   const stepScreen = useMemo(() => {
     const steps = {
@@ -45,5 +62,7 @@ export default function useSteps(): UseStepsOutput {
     currentStep,
     totalSteps,
     percentageCompleted,
+    progressIndicatorColor: isLastStep ? Color.green : color,
+    isLastStep,
   };
 }

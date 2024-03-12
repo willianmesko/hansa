@@ -1,17 +1,12 @@
 import React from "react";
 import { ProgressIndicatorProps } from "./ProgressIndicator.props";
 
-import useProgressIndicator from "./useProgressIndicator";
-
 const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
-  color: _color,
-  progress: _progress,
+  color,
+  progress,
 }) => {
   const radius = 25;
-  const { progress, color } = useProgressIndicator({
-    progress: _progress,
-    color: _color,
-  });
+
   const dashArray = Math.PI * radius * 2;
 
   const dashOffset = dashArray - (dashArray * progress) / 100;

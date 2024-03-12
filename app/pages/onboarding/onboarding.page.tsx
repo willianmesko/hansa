@@ -10,7 +10,6 @@ import {
   ArrowUturnLeftIcon,
 } from "@heroicons/react/24/solid";
 import { Step, useSteps } from "./steps";
-import { Color } from "~/shared/components/ProgressIndicator/ProgressIndicator.props";
 
 const link =
   "https://dapper-shade-446.notion.site/Hansa-Take-Home-ddcb96a0f4f74f8faf3c7daa105f58f4";
@@ -23,9 +22,9 @@ const OnboardingPage: React.FC = () => {
     currentStep,
     totalSteps,
     percentageCompleted,
+    progressIndicatorColor,
+    isLastStep,
   } = useSteps();
-
-  const isLastStep = currentStep === totalSteps;
 
   return (
     <div>
@@ -38,7 +37,7 @@ const OnboardingPage: React.FC = () => {
         <div className="flex md:justify-between gap-2 mb-4">
           <ProgressIndicator
             progress={percentageCompleted}
-            color={isLastStep ? Color.green : Color.blue}
+            color={progressIndicatorColor}
           />
 
           <p className="text-wrap md:leading-[3rem]  font-semibold text-2xl">
@@ -52,7 +51,7 @@ const OnboardingPage: React.FC = () => {
         {stepScreen}
       </Container>
 
-      <div className="w-full md:w-[50vw] md:m-auto flex fixed pointer md:relative bg-white md:bg-transparent  justify-center gap-2 items-center  bottom-0  border-t-1 h-16 md:border-none">
+      <div className="w-full md:w-[50vw] md:m-auto flex fixed md:relative cursor-pointer  bg-white md:bg-transparent  justify-center gap-2 items-center  bottom-0  border-t-1 h-16 md:border-none">
         {currentStep === Step.First ? (
           <button
             type="submit"
